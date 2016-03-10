@@ -7,6 +7,8 @@ services:
       extends:
          file: compose-defaults.yml
          service: rendez-vous
+      ports:
+         - "19100:19100" 
       networks:
          - jxtadoop-net0
 
@@ -16,22 +18,37 @@ services:
       extends:
          file: compose-defaults.yml
          service: relay 
+      ports:
+         - "19101:19101" 
       networks:
          - jxtadoop-net0
       links:
          - namenode 
 
-   client:
-      container_name: client
-      hostname: client
+   datanode0a:
+      container_name: dn0a
+      hostname: dn0a
       extends:
          file: compose-defaults.yml
-         service: client
+         service: node
       networks:
          - jxtadoop-net0
       links:
          - namenode
          - relaynode
+
+   datanode0b:
+      container_name: dn0b
+      hostname: dn0b
+      extends:
+         file: compose-defaults.yml
+         service: node
+      networks:
+         - jxtadoop-net0
+      links:
+         - namenode
+         - relaynode
+
 
    datanode1a:
       container_name: dn1a
@@ -41,9 +58,69 @@ services:
          service: node
       networks:
          - jxtadoop-net1
-      links:
-         - namenode
-         - relaynode
+      extra_hosts:
+         - "rendez-vous:20.0.0.1"
+         - "relay:20.0.0.1"
+
+   datanode1b:
+      container_name: dn1b
+      hostname: dn1b
+      extends:
+         file: compose-defaults.yml
+         service: node
+      networks:
+         - jxtadoop-net1
+      extra_hosts:
+         - "rendez-vous:20.0.0.1"
+         - "relay:20.0.0.1"
+
+   datanode2a:
+      container_name: dn2a
+      hostname: dn2a
+      extends:
+         file: compose-defaults.yml
+         service: node
+      networks:
+         - jxtadoop-net2
+      extra_hosts:
+         - "rendez-vous:20.0.0.1"
+         - "relay:20.0.0.1"
+
+   datanode2b:
+      container_name: dn2b
+      hostname: dn2b
+      extends:
+         file: compose-defaults.yml
+         service: node
+      networks:
+         - jxtadoop-net2
+      extra_hosts:
+         - "rendez-vous:20.0.0.1"
+         - "relay:20.0.0.1"
+
+   datanode3a:
+      container_name: dn3a
+      hostname: dn3a
+      extends:
+         file: compose-defaults.yml
+         service: node
+      networks:
+         - jxtadoop-net3
+      extra_hosts:
+         - "rendez-vous:20.0.0.1"
+         - "relay:20.0.0.1"
+
+   datanode3b:
+      container_name: dn3b
+      hostname: dn3b
+      extends:
+         file: compose-defaults.yml
+         service: node
+      networks:
+         - jxtadoop-net3
+      extra_hosts:
+         - "rendez-vous:20.0.0.1"
+         - "relay:20.0.0.1"
 
 networks:
    jxtadoop-net0:
@@ -63,3 +140,21 @@ networks:
            - subnet: 21.0.0.0/16
              ip_range: 21.0.0.0/24
              gateway: 21.0.0.1
+
+   jxtadoop-net2:
+     driver: bridge
+     ipam:
+        driver: default
+        config:
+           - subnet: 22.0.0.0/16
+             ip_range: 22.0.0.0/24
+             gateway: 22.0.0.1
+
+   jxtadoop-net3:
+     driver: bridge
+     ipam:
+        driver: default
+        config:
+           - subnet: 23.0.0.0/16
+             ip_range: 23.0.0.0/24
+             gateway: 23.0.0.1

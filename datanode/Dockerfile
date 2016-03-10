@@ -25,7 +25,7 @@ RUN cd /opt/jxtadoop-1.0.0/etc/ &&\
 	sed -i 's/__P2PDFSCLIENTPORT__/19102/g' hdfs-p2p.xml &&\
 	sed -i 's/__P2PCLIENTPORT__/19103/g' hdfs-p2p.xml &&\
 	sed -i 's/__NAMENODEADDRR__:__NAMENODEPORT__/rendez-vous:19100/g' hdfs-p2p.xml &&\
-	sed -i 's/__RELAYADDRR__:__RELAYNODEPORT__/relay:19100/g' hdfs-p2p.xml &&\
+	sed -i 's/__RELAYADDRR__:__RELAYNODEPORT__/relay:19101/g' hdfs-p2p.xml &&\
 	chmod +x /startup.sh
 
 CMD /startup.sh
