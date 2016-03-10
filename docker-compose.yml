@@ -1,0 +1,65 @@
+version: '2'
+
+services:
+   namenode:
+      container_name: rendez-vous 
+      hostname: rendez-vous 
+      extends:
+         file: compose-defaults.yml
+         service: rendez-vous
+      networks:
+         - jxtadoop-net0
+
+   relaynode:
+      container_name: relay 
+      hostname: relay
+      extends:
+         file: compose-defaults.yml
+         service: relay 
+      networks:
+         - jxtadoop-net0
+      links:
+         - namenode 
+
+   client:
+      container_name: client
+      hostname: client
+      extends:
+         file: compose-defaults.yml
+         service: client
+      networks:
+         - jxtadoop-net0
+      links:
+         - namenode
+         - relaynode
+
+   datanode1a:
+      container_name: dn1a
+      hostname: dn1a
+      extends:
+         file: compose-defaults.yml
+         service: node
+      networks:
+         - jxtadoop-net1
+      links:
+         - namenode
+         - relaynode
+
+networks:
+   jxtadoop-net0:
+     driver: bridge
+     ipam:
+        driver: default
+        config:
+           - subnet: 20.0.0.0/16
+             ip_range: 20.0.0.0/24
+             gateway: 20.0.0.1
+
+   jxtadoop-net1:
+     driver: bridge
+     ipam:
+        driver: default
+        config:
+           - subnet: 21.0.0.0/16
+             ip_range: 21.0.0.0/24
+             gateway: 21.0.0.1

@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+   rendez-vous:
+      build : namenode 
+
+   relay:
+      build : relay
+
+   node:
+      build : datanode
+
+   client: 
+      build : datanode
+      command: 'sleep 1000000000'
