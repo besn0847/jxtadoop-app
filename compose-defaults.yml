@@ -10,6 +10,3 @@ services:
    node:
       build : datanode
 
-   client: 
-      build : datanode
-      command: 'sleep 1000000000'
