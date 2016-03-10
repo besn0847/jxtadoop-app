@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Do not modify this file directly.  Instead, copy entries that you -->
+<!-- wish to modify from this file into core-site.xml and change them -->
+<!-- there.  If core-site.xml does not already exist, create it.      -->
+
+<configuration>
+
+<!--- Jxta properties -->
+
+<property>
+  <name>hadoop.p2p.dir</name>
+  <value>${hadoop.home.dir}/var/p2p/</value>
+  <description>A base for P2P secure data.</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.password</name>
+  <value>pepete</value>
+  <description>The password used to protect the keystore and priv key.</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.namenode.port</name>
+  <value>__P2PNAMENODEPORT__</value>
+  <description>The listenning port for the Rendez Vous peer</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.datanode.port</name>
+  <value>__P2PDATANODEPORT__</value>
+  <description>The listenning port for the Edge peer</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.dfsclient.port</name>
+  <value>__P2PDFSCLIENTPORT__</value>
+  <description>The listenning port for the DFS Client peer</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.p2pclient.port</name>
+  <value>__P2PCLIENTPORT__</value>
+  <description>The listenning port for the P2P Client peer</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.datanode.relay</name>
+  <value>true</value>
+  <description>Should the Datanode behave like a relay</description>
+</property>
+ 
+<property>
+  <name>hadoop.p2p.use.multicast</name>
+  <value>true</value>
+  <description>Should multicast be enabled (default : yes)</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.rpc.backlog</name>
+  <value>200</value>
+  <description>The rpc server socket backlog</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.info.backlog</name>
+  <value>1000</value>
+  <description>The INFO server socket backlog</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.rpc.timeout</name>
+  <value>30000</value>
+  <description>The rpc server socket timeout</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.info.timeout</name>
+  <value>30000</value>
+  <description>The info server socket timeout</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.rpc.rdv</name>
+  <value>tcp://__NAMENODEADDRR__:__NAMENODEPORT__</value>
+  <description>The rpc rendez-vous seed</description>
+</property>
+
+<property>
+  <name>hadoop.p2p.rpc.relay</name>
+  <value>tcp://__RELAYADDRR__:__RELAYNODEPORT__</value>
+  <description>The rpc relay seed</description>
+</property>
+
+</configuration>
