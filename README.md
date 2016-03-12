@@ -1,14 +1,14 @@
 # A distibuted filesytem based on Hadoop & Jxta
-This is a follow-up to this [post]() published about 2 years ago. There was no real explanation on how to quickly set-up Jxtadoop in a multi-network environment.
+This is a follow-up to this [post](http://besn0847.blogspot.com/2013/12/data-replication-in-multi-cloud.html) published about 2 years ago. There was no real explanation on how to quickly set-up Jxtadoop in a multi-network environment.
 
-Since then Docker has been significantly enhanced with networking and ability to create app based on Docker Compose. This is post is simply a guide on how to deploy and use Jxtadoop.
+Since then, Docker has been significantly enhanced with networking and ability to create app based on Docker Compose. This is post is simply a guide on how to deploy and use Jxtadoop.
 
 ## Pre-requisites
 You need to make you use at least the following :
 * Docker Engine v1.10.2+
 * Docker Compose v1.6.2+
 
-All the test i did with lowaer versions, especially for Docker Compose failed, mainly because this requires the latest capabilites to build networks in the composer.
+All the test i did with lower versions, especially for Docker Compose failed, mainly because this requires the latest capabilites to build networks in the composer.
 
 ## Quickstart
 Simply clone and start Docker Compose. First, clone the repository:
@@ -24,7 +24,7 @@ You should see the containers running. Just type 'docker-compose ps' and you sho
 
     docker-compose ps
         Name              Command               State   Ports
-        -----------------------------------------------------^M
+        -----------------------------------------------------
         dn0a          /bin/sh -c /startup.sh   Up
         dn0b          /bin/sh -c /startup.sh   Up
         dn1a          /bin/sh -c /startup.sh   Up
